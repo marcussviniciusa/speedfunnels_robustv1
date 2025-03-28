@@ -7,6 +7,7 @@ const axios = require('axios');
 const { format, parseISO } = require('date-fns');
 const logger = require('../utils/logger');
 const { formatToStandardDate, addDefaultTime, prepareMetaTimeRange } = require('../utils/dateUtils');
+const { MetaAccount } = require('../models');
 
 // Constantes de configuração da API
 const META_API_VERSION = process.env.META_API_VERSION || 'v16.0';
@@ -82,17 +83,19 @@ apiClient.interceptors.response.use(
  * @param {string} entityId - ID da entidade (campanha, ad set, etc.)
  * @param {string} entityType - Tipo da entidade ('campaign', 'adset', 'ad')
  * @param {Object} params - Parâmetros da requisição
+ * @param {string} [accessToken] - Token de acesso opcional (se não fornecido, usa o da variável de ambiente)
  * @returns {Promise<Object>} Dados de insights formatados
  */
-const getInsights = async (entityId, entityType, params = {}) => {
+const getInsights = async (entityId, entityType, params = {}, accessToken = null) => {
   try {
-    const accessToken = process.env.META_ACCESS_TOKEN;
-    if (!accessToken) {
+    // Usar o token fornecido ou o da variável de ambiente como fallback
+    const token = accessToken || process.env.META_ACCESS_TOKEN;
+    if (!token) {
       throw new Error('Token de acesso do Meta não configurado');
     }
     
     // Garantir formatação consistente de datas nos parâmetros
-    const sanitizedParams = { ...params, access_token: accessToken };
+    const sanitizedParams = { ...params, access_token: token };
     
     // Formatação especial para o time_range para garantir consistência
     if (sanitizedParams.time_range && typeof sanitizedParams.time_range === 'string') {
@@ -381,12 +384,51 @@ const generateMockPerformanceData = (startDate, endDate, timeIncrement = 'day') 
   return mockData;
 };
 
-const getAccountPerformance = async (startDate, endDate, allowSimulatedData = true, timeIncrement = 'day') => {
+/**
+ * Obtém a conta ativa atual do banco de dados
+ * @returns {Promise<Object>} Conta ativa ou null se não encontrada
+ */
+const getActiveMetaAccount = async () => {
   try {
-    let accountId = process.env.META_AD_ACCOUNT_ID;
-    if (!accountId) {
-      throw new Error('ID da conta de anúncios não configurado');
+    const activeAccount = await MetaAccount.findOne({
+      where: { isActive: true }
+    });
+    
+    if (!activeAccount) {
+      // Se não encontrar conta ativa, tenta usar a variável de ambiente como fallback
+      const fallbackAccountId = process.env.META_AD_ACCOUNT_ID;
+      const fallbackToken = process.env.META_ACCESS_TOKEN;
+      
+      if (fallbackAccountId && fallbackToken) {
+        logger.warn('Nenhuma conta ativa encontrada no banco de dados. Usando variáveis de ambiente como fallback.');
+        return {
+          accountId: fallbackAccountId,
+          accessToken: fallbackToken
+        };
+      }
+      
+      logger.error('Nenhuma conta ativa encontrada e não há variáveis de ambiente para fallback');
+      return null;
     }
+    
+    return activeAccount;
+  } catch (error) {
+    logger.error('Erro ao buscar conta ativa:', error);
+    return null;
+  }
+};
+
+const getAccountPerformance = async (startDate, endDate, allowSimulatedData = true, timeIncrement = 'day', selectedAccountId = null) => {
+  try {
+    // Buscar a conta ativa do banco de dados
+    const activeAccount = await getActiveMetaAccount();
+    
+    if (!activeAccount) {
+      throw new Error('Nenhuma conta do Meta ativa encontrada');
+    }
+    
+    let accountId = activeAccount.accountId;
+    const accessToken = activeAccount.accessToken;
     
     // Garantir que o ID da conta tenha o prefixo 'act_'
     if (!accountId.startsWith('act_')) {
@@ -493,7 +535,7 @@ const getAccountPerformance = async (startDate, endDate, allowSimulatedData = tr
     
     try {
       // Tentar fazer requisição de insights
-      const response = await getInsights(accountId, 'account', params);
+      const response = await getInsights(accountId, 'account', params, accessToken);
       
       // Filtrar apenas dados que estejam dentro do intervalo de datas solicitado
       const filteredData = (response.data || []).filter(item => {
@@ -831,5 +873,6 @@ module.exports = {
   getCampaignDetails,
   getAdsByCampaignId,
   getAccountPerformance,
-  prepareMetaTimeRange
+  prepareMetaTimeRange,
+  getActiveMetaAccount
 };

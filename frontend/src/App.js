@@ -9,6 +9,7 @@ import MainLayout from './components/layouts/MainLayout';
 import Dashboard from './pages/Dashboard';
 import Campaigns from './pages/Campaigns';
 import CampaignDetails from './pages/CampaignDetails';
+import MetaAccounts from './pages/MetaAccounts';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/campaigns" element={<Campaigns />} />
           <Route path="/campaigns/:id" element={<CampaignDetails />} />
+          <Route path="/meta-accounts" element={<MetaAccounts />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

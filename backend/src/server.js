@@ -13,6 +13,7 @@ const fs = require('fs');
 const sequelize = require('./config/database');
 const campaignRoutes = require('./routes/campaignRoutes');
 const statsRoutes = require('./routes/statsRoutes');
+const metaAccountRoutes = require('./routes/metaAccountRoutes');
 const logger = require('./utils/logger');
 
 // Criação do diretório de logs caso não exista
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
 // Rotas
 app.use('/api/campaigns', campaignRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/meta-accounts', metaAccountRoutes);
 
 // Rota de teste/status
 app.get('/api/status', (req, res) => {

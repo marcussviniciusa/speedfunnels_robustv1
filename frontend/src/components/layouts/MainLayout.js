@@ -20,7 +20,8 @@ import {
   Campaign as CampaignIcon,
   BarChart as BarChartIcon,
   Settings as SettingsIcon,
-  ChevronLeft as ChevronLeftIcon
+  ChevronLeft as ChevronLeftIcon,
+  AccountCircle as AccountIcon
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -70,6 +71,12 @@ const MainLayout = () => {
       icon: <BarChartIcon />, 
       path: '/reports', 
       active: isActive('/reports') 
+    },
+    { 
+      text: 'Contas Meta', 
+      icon: <AccountIcon />, 
+      path: '/meta-accounts', 
+      active: isActive('/meta-accounts') 
     },
   ];
   

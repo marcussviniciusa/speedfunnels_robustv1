@@ -4,7 +4,17 @@
  */
 
 const Campaign = require('./Campaign');
+const MetaAccount = require('./MetaAccount');
+
+// Definir associações entre modelos (se necessário)
+const setupAssociations = () => {
+  // Por enquanto, não há associações
+};
+
+// Configurar associações
+setupAssociations();
 
 module.exports = {
-  Campaign
+  Campaign,
+  MetaAccount
 };

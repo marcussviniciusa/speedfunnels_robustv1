@@ -37,4 +37,11 @@ router.get('/:id/performance', validateDateParams, campaignController.getCampaig
  */
 router.get('/:id/ads', campaignController.getAdsByCampaignId);
 
+/**
+ * @route POST /api/campaigns/sync/:accountId
+ * @desc Sincroniza campanhas do Meta para uma conta específica
+ * @access Privado
+ */
+router.post('/sync/:accountId', campaignController.syncCampaignsFromMeta);
+
 module.exports = router;

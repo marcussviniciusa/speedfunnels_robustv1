@@ -14,6 +14,7 @@ const sequelize = require('./config/database');
 const campaignRoutes = require('./routes/campaignRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 const metaAccountRoutes = require('./routes/metaAccountRoutes');
+const seedRoutes = require('./routes/seedRoutes');
 const logger = require('./utils/logger');
 
 // Criação do diretório de logs caso não exista
@@ -58,6 +59,7 @@ app.use((req, res, next) => {
 app.use('/api/campaigns', campaignRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/meta-accounts', metaAccountRoutes);
+app.use('/api/seed', seedRoutes);
 
 // Rota de teste/status
 app.get('/api/status', (req, res) => {

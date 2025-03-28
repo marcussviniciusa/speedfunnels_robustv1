@@ -5,6 +5,7 @@
 
 const { Op } = require('sequelize');
 const Campaign = require('../models/Campaign');
+const { MetaAccount } = require('../models');
 const metaApiService = require('../services/metaApiService');
 const logger = require('../utils/logger');
 const { 
@@ -15,104 +16,198 @@ const {
 } = require('../utils/dateUtils');
 
 class CampaignController {
+  constructor() {
+    // Bind instance methods to ensure 'this' context is preserved
+    this.validateDateConsistency = this.validateDateConsistency.bind(this);
+    this.getCampaignPerformanceById = this.getCampaignPerformanceById.bind(this);
+    this.validateAndSyncCampaign = this.validateAndSyncCampaign.bind(this);
+  }
+
   /**
    * Obtém todas as campanhas com filtros e paginação
    * Garante formatação consistente de datas em parâmetros e resultados
    */
   async getCampaigns(req, res) {
     try {
-      const { 
-        page = 1, 
-        limit = 10, 
-        status,
-        startDate,
-        endDate, 
-        sort = 'updatedAt',
-        order = 'DESC' 
+      // Extrair parâmetros da requisição
+      const {
+        startDate, endDate, status,
+        search, sort = 'updatedAt',
+        order = 'DESC', page = 1,
+        limit = 10, accountId
       } = req.query;
 
-      // Validação e formatação das datas de filtro
+      // Log para depuração
+      logger.debug('Todos os parâmetros recebidos na request:', {
+        startDate, endDate, status, search, 
+        accountId, page, limit
+      });
+
+      // Validar e formatar datas
       let formattedStartDate = startDate ? formatToStandardDate(startDate) : null;
       let formattedEndDate = endDate ? formatToStandardDate(endDate) : null;
 
-      // Log detalhado para depuração
+      // Log detalhado dos parâmetros
       logger.debug('Parâmetros de filtro para busca de campanhas', {
         originalDates: { startDate, endDate },
         formattedDates: { formattedStartDate, formattedEndDate },
-        otherParams: { status, sort, order, page, limit }
+        otherParams: { sort, order, page, limit },
+        accountIdInfo: {
+          value: accountId,
+          type: typeof accountId,
+          exists: !!accountId
+        }
       });
 
-      // Construção dos filtros
+      // Construir condição WHERE para a query
       const where = {};
+
+      // Filtro por conta
+      if (accountId) {
+        logger.debug('Aplicando filtro de conta:', { accountId });
+        where.adAccountId = accountId;
+      }
       
-      if (status) where.status = status;
+      // Filtro por status
+      if (status) {
+        where.status = status;
+      }
       
-      if (formattedStartDate && formattedEndDate) {
-        where.startDate = {
-          [Op.gte]: formattedStartDate,
+      // Filtro por texto (pesquisa)
+      if (search) {
+        where.name = {
+          [Op.and]: [
+            { [Op.iLike]: `%${search}%` },
+            { [Op.notILike]: '%test%' },
+            { [Op.notILike]: '%teste%' }
+          ]
         };
-        where.endDate = {
-          [Op.lte]: formattedEndDate,
-        };
-      } else if (formattedStartDate) {
-        where.startDate = {
-          [Op.gte]: formattedStartDate,
-        };
-      } else if (formattedEndDate) {
-        where.endDate = {
-          [Op.lte]: formattedEndDate,
+      } else {
+        where.name = {
+          [Op.and]: [
+            { [Op.notILike]: '%test%' },
+            { [Op.notILike]: '%teste%' }
+          ]
         };
       }
-
-      // Configuração da paginação
-      const offset = (page - 1) * limit;
       
-      // Execução da consulta
-      const { count, rows } = await Campaign.findAndCountAll({
+      if (formattedStartDate && formattedEndDate) {
+        // Lógica melhorada: incluir campanhas que:
+        // 1. Começaram antes do período e terminam durante ou depois dele
+        // 2. Começaram durante o período
+        where[Op.and] = [
+          // A campanha ou começou antes/durante o período E termina depois/durante o período, 
+          // OU a campanha não tem data final (campanha em andamento)
+          {
+            [Op.or]: [
+              // Campanhas que se sobrepõem ao período de filtro
+              {
+                [Op.and]: [
+                  { startDate: { [Op.lte]: formattedEndDate } },  // Começou antes do fim do período
+                  { 
+                    [Op.or]: [
+                      { endDate: { [Op.gte]: formattedStartDate } },  // Termina após o início do período
+                      { endDate: { [Op.is]: null } }  // Não tem data final (em andamento)
+                    ]
+                  }
+                ]
+              },
+              // Campanhas que começaram durante o período
+              {
+                [Op.and]: [
+                  { startDate: { [Op.gte]: formattedStartDate } },
+                  { startDate: { [Op.lte]: formattedEndDate } }
+                ]
+              }
+            ]
+          }
+        ];
+      } else if (formattedStartDate) {
+        where[Op.and] = [
+          {
+            [Op.or]: [
+              // Campanhas que começaram após a data inicial
+              { startDate: { [Op.gte]: formattedStartDate } },
+              // Campanhas que começaram antes mas terminam após a data inicial ou são contínuas
+              {
+                [Op.and]: [
+                  { startDate: { [Op.lt]: formattedStartDate } },
+                  { 
+                    [Op.or]: [
+                      { endDate: { [Op.gte]: formattedStartDate } },
+                      { endDate: { [Op.is]: null } }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ];
+      } else if (formattedEndDate) {
+        where[Op.and] = [
+          {
+            [Op.or]: [
+              // Campanhas que terminam antes da data final
+              { endDate: { [Op.lte]: formattedEndDate } },
+              // Campanhas que começam antes da data final e não têm data final
+              {
+                [Op.and]: [
+                  { startDate: { [Op.lte]: formattedEndDate } },
+                  { endDate: { [Op.is]: null } }
+                ]
+              }
+            ]
+          }
+        ];
+      }
+
+      // Filter para mostrar apenas campanhas validadas
+      where.syncValidated = true;
+
+      // Log da condição WHERE
+      logger.debug('Condição WHERE para query:', {
+        whereObject: JSON.stringify(where),
+        hasAccountIdFilter: !!where.adAccountId
+      });
+
+      // Configurar opções de paginação e ordenação
+      const options = {
         where,
-        limit: parseInt(limit),
-        offset,
         order: [[sort, order]],
+        limit: parseInt(limit, 10),
+        offset: (parseInt(page, 10) - 1) * parseInt(limit, 10)
+      };
+
+      // Executar a query para contar o total de campanhas
+      const { count, rows } = await Campaign.findAndCountAll(options);
+
+      // Log do resultado
+      logger.debug(`Retornando ${rows.length} campanhas (total: ${count})`, {
+        firstResult: rows.length > 0 ? JSON.stringify(rows[0]) : 'nenhum'
       });
 
-      // Formatação consistente de datas antes de enviar a resposta
-      const formattedCampaigns = rows.map(campaign => {
-        const plainCampaign = campaign.get({ plain: true });
-        return formatEntityDates(plainCampaign, [
-          'startDate', 
-          'endDate', 
-          'createdAt', 
-          'updatedAt', 
-          'lastSyncedAt'
-        ]);
-      });
-
-      // Log de validação dos resultados
-      logger.debug(`Retornando ${formattedCampaigns.length} campanhas (total: ${count})`, {
-        firstResult: formattedCampaigns.length > 0 ? JSON.stringify(formattedCampaigns[0]) : 'Sem resultados'
-      });
-
-      // Resposta formatada
+      // Retornar os resultados
       return res.status(200).json({
         success: true,
-        data: formattedCampaigns,
+        data: rows,
         pagination: {
           total: count,
-          page: parseInt(page),
-          limit: parseInt(limit),
-          pages: Math.ceil(count / limit),
-        },
+          page: parseInt(page, 10),
+          limit: parseInt(limit, 10),
+          pages: Math.ceil(count / parseInt(limit, 10))
+        }
       });
+
     } catch (error) {
       logger.error('Erro ao buscar campanhas:', {
         message: error.message,
         stack: error.stack
       });
-      
+
       return res.status(500).json({
         success: false,
         error: 'Erro ao buscar campanhas',
-        message: error.message,
+        message: error.message
       });
     }
   }
@@ -280,14 +375,27 @@ class CampaignController {
       });
       
       // Validação final de consistência de datas
-      const validationResult = this.validateDateConsistency(
-        performanceData, 
-        formattedStartDate, 
-        formattedEndDate
-      );
+      const self = this;
+      let validationResult = { isValid: true }; // Default value
       
-      if (!validationResult.isValid) {
-        logger.warn('Inconsistência de datas detectada na resposta da API', validationResult);
+      if (performanceData && performanceData.length > 0) {
+        try {
+          validationResult = self.validateDateConsistency(
+            performanceData, 
+            formattedStartDate, 
+            formattedEndDate
+          );
+          
+          if (!validationResult.isValid) {
+            logger.warn('Inconsistência de datas detectada na resposta da API', validationResult);
+          }
+        } catch (validationError) {
+          logger.warn('Erro ao validar consistência de datas', {
+            message: validationError.message,
+            stack: validationError.stack
+          });
+          // Continue with default validation result if validation fails
+        }
       }
       
       return res.status(200).json({
@@ -403,8 +511,7 @@ class CampaignController {
     
     // Verificar datas de início e fim
     const firstDate = formatToStandardDate(sortedData[0].date_start);
-    const lastDate = formatToStandardDate(sortedData[sortedData.length -
-1].date_stop);
+    const lastDate = formatToStandardDate(sortedData[sortedData.length - 1].date_stop);
     
     const isStartDateValid = firstDate === expectedStartDate;
     const isEndDateValid = lastDate === expectedEndDate;
@@ -473,6 +580,181 @@ class CampaignController {
         success: false,
         error: 'Erro ao buscar anúncios da campanha',
         message: error.message,
+      });
+    }
+  }
+
+  /**
+   * Sincroniza campanhas do Meta para uma conta específica
+   * Busca todas as campanhas da conta no Meta e atualiza o banco de dados local
+   * @param {Object} req - Objeto de requisição
+   * @param {Object} res - Objeto de resposta
+   */
+  async syncCampaignsFromMeta(req, res) {
+    try {
+      const { accountId } = req.params;
+
+      if (!accountId) {
+        return res.status(400).json({
+          success: false,
+          error: 'ID da conta não fornecido'
+        });
+      }
+
+      // Buscar a conta no banco de dados
+      const metaAccount = await MetaAccount.findOne({
+        where: { accountId }
+      });
+
+      if (!metaAccount) {
+        return res.status(404).json({
+          success: false,
+          error: 'Conta não encontrada'
+        });
+      }
+
+      // Atualizar o last_used da conta
+      metaAccount.lastUsed = new Date();
+      await metaAccount.save();
+
+      logger.info(`Iniciando sincronização de campanhas para conta ${accountId}`);
+
+      // Buscar campanhas na API do Meta
+      const { data: metaCampaigns } = await metaApiService.getCampaignsByAccount(
+        accountId,
+        metaAccount.accessToken
+      );
+
+      if (!metaCampaigns || metaCampaigns.length === 0) {
+        return res.status(200).json({
+          success: true,
+          message: 'Nenhuma campanha encontrada para sincronização',
+          data: {
+            total: 0,
+            created: 0,
+            updated: 0,
+            campaigns: []
+          }
+        });
+      }
+
+      logger.info(`Encontradas ${metaCampaigns.length} campanhas na API do Meta`);
+
+      // Contadores para relatório
+      let created = 0;
+      let updated = 0;
+      const processedCampaigns = [];
+
+      // Processar cada campanha
+      for (const metaCampaign of metaCampaigns) {
+        // Verificar se a campanha é um teste (verificação extra)
+        if (metaCampaign.name && (
+            metaCampaign.name.toLowerCase().includes('test') || 
+            metaCampaign.name.toLowerCase().includes('teste')
+        )) {
+          logger.debug(`Ignorando campanha de teste: ${metaCampaign.name}`);
+          continue; // Pular esta campanha
+        }
+        
+        // Buscar se a campanha já existe no banco
+        let campaign = await Campaign.findByPk(metaCampaign.id);
+        let isNew = false;
+
+        // Se não existir, criar nova
+        if (!campaign) {
+          campaign = Campaign.build({
+            id: metaCampaign.id,
+            adAccountId: accountId
+          });
+          isNew = true;
+          created++;
+        } else {
+          updated++;
+        }
+
+        // Sincronizar dados
+        campaign.syncFromMetaApi(metaCampaign);
+        
+        // Verificar explicitamente se a campanha está ativa no Meta
+        // e garantir que o status esteja corretamente sincronizado
+        if (metaCampaign.status) {
+          campaign.status = metaCampaign.status;
+        }
+        
+        // Processar dados de insights se disponíveis
+        if (metaCampaign.insights && metaCampaign.insights.data && metaCampaign.insights.data.length > 0) {
+          const insights = metaCampaign.insights.data[0];
+          
+          // Converter para números antes de atribuir com validação rigorosa para evitar NaN
+          // Parse como inteiro, com fallback para 0 se for NaN
+          const safeParseInt = (value) => {
+            const parsed = parseInt(value || 0, 10);
+            return isNaN(parsed) ? 0 : parsed; 
+          };
+          
+          // Parse como float, com fallback para 0 se for NaN
+          const safeParseFloat = (value) => {
+            const parsed = parseFloat(value || 0);
+            return isNaN(parsed) ? 0 : parsed;
+          };
+          
+          campaign.impressions = safeParseInt(insights.impressions);
+          campaign.clicks = safeParseInt(insights.clicks);
+          campaign.spend = safeParseFloat(insights.spend);
+          campaign.conversions = safeParseInt(insights.conversions);
+          
+          // Log para debug
+          logger.debug(`Processando insights para campanha ${metaCampaign.id}:`, {
+            impressions: campaign.impressions,
+            clicks: campaign.clicks,
+            spend: campaign.spend,
+            conversions: campaign.conversions
+          });
+        } else {
+          // Garantir valores default se não houver insights
+          campaign.impressions = campaign.impressions || 0;
+          campaign.clicks = campaign.clicks || 0;
+          campaign.spend = campaign.spend || 0;
+          campaign.conversions = campaign.conversions || 0;
+        }
+
+        // Marcar como sincronizada
+        campaign.syncValidated = true;
+        campaign.lastSyncedAt = new Date();
+        
+        // Salvar no banco
+        await campaign.save();
+
+        // Adicionar à lista de processados
+        processedCampaigns.push({
+          id: campaign.id,
+          name: campaign.name,
+          status: campaign.status,
+          isNew
+        });
+      }
+
+      // Retornar relatório
+      return res.status(200).json({
+        success: true,
+        data: {
+          total: processedCampaigns.length,
+          created,
+          updated,
+          campaigns: processedCampaigns
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao sincronizar campanhas do Meta:', {
+        message: error.message,
+        stack: error.stack
+      });
+
+      return res.status(500).json({
+        success: false,
+        error: 'Erro ao sincronizar campanhas',
+        message: error.message
       });
     }
   }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Container, 
@@ -21,12 +21,15 @@ import {
   Alert,
   Divider,
   Card,
-  CardContent
+  CardContent,
+  Snackbar
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import SyncIcon from '@mui/icons-material/Sync';
 import DateRangePicker from '../components/DateRangePicker';
-import { getCampaigns } from '../services/api';
+import AccountSelector from '../components/AccountSelector';
+import { getCampaigns, syncCampaignsFromMeta } from '../services/api';
 import { getLastDaysFilter, formatToDisplayDate } from '../utils/dateUtils';
 
 /**
@@ -44,55 +47,65 @@ const Campaigns = () => {
   const [dateFilter, setDateFilter] = useState(getLastDaysFilter(30));
   const [showFilters, setShowFilters] = useState(false);
   const [statusFilter, setStatusFilter] = useState('');
+  const [selectedAccountId, setSelectedAccountId] = useState('');
   
   // Estados de paginação
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [total, setTotal] = useState(0);
   
+  // Estado de sincronização
+  const [syncLoading, setSyncLoading] = useState(false);
+  const [syncFeedback, setSyncFeedback] = useState({ open: false, message: '', type: 'info' });
+  
   // Carregar campanhas
-  useEffect(() => {
-    const fetchCampaigns = async () => {
-      setLoading(true);
-      setError(null);
-      
-      try {
-        // Preparar filtros
-        const filters = {
-          startDate: dateFilter.startDate,
-          endDate: dateFilter.endDate,
-          status: statusFilter || undefined,
-          search: searchTerm || undefined
-        };
-        
-        // Buscar dados
-        const response = await getCampaigns(
-          filters,
-          page + 1, // API usa 1-indexed
-          rowsPerPage
-        );
-        
-        if (response.success) {
-          setCampaigns(response.data);
-          setTotal(response.pagination?.total || 0);
-          
-          // Log para validação de datas
-          if (response.data && response.data.length > 0) {
-            console.log('Amostra de campanha:', response.data[0]);
-          }
-        } else {
-          setError(response.error || 'Erro ao carregar campanhas');
-        }
-      } catch (error) {
-        console.error('Erro ao buscar campanhas:', error);
-        setError(error.response?.data?.message || error.message || 'Erro desconhecido');
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchCampaigns = useCallback(async () => {
+    setLoading(true);
+    setError(null);
     
+    try {
+      // Preparar filtros
+      const filters = {
+        startDate: dateFilter.startDate,
+        endDate: dateFilter.endDate,
+        status: statusFilter || undefined,
+        search: searchTerm || undefined,
+        accountId: selectedAccountId || undefined
+      };
+      
+      // Log para depuração
+      console.log('Enviando filtros para API:', filters);
+      
+      // Buscar dados
+      const response = await getCampaigns(
+        filters,
+        page + 1, // API usa 1-indexed
+        rowsPerPage
+      );
+      
+      if (response.success) {
+        setCampaigns(response.data);
+        setTotal(response.pagination?.total || 0);
+        
+        // Log para validação de datas
+        if (response.data && response.data.length > 0) {
+          console.log('Amostra de campanha:', response.data[0]);
+        }
+      } else {
+        setError(response.error || 'Erro ao carregar campanhas');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar campanhas:', error);
+      setError(error.response?.data?.message || error.message || 'Erro desconhecido');
+    } finally {
+      setLoading(false);
+    }
+  }, [dateFilter, statusFilter, searchTerm, selectedAccountId, page, rowsPerPage]);
+  
+  // Carregar campanhas no carregamento da página e quando os filtros mudarem
+  useEffect(() => {
     fetchCampaigns();
-  }, [page, rowsPerPage, dateFilter, statusFilter, searchTerm]);
+  }, [fetchCampaigns]);
   
   // Manipular mudança de página
   const handleChangePage = (event, newPage) => {
@@ -135,6 +148,67 @@ const Campaigns = () => {
     setPage(0); // Resetar para primeira página
   };
   
+  // Manipular seleção de conta
+  const handleAccountChange = (accountId) => {
+    console.log('Conta selecionada:', accountId);
+    setSelectedAccountId(accountId);
+    setPage(0); // Resetar para primeira página
+  };
+  
+  // Sincronizar campanhas com o Meta
+  const handleSyncCampaigns = async () => {
+    if (!selectedAccountId) {
+      setSyncFeedback({
+        open: true,
+        message: 'Selecione uma conta para sincronizar as campanhas',
+        type: 'error'
+      });
+      return;
+    }
+    
+    setSyncLoading(true);
+    
+    try {
+      const response = await syncCampaignsFromMeta(selectedAccountId);
+      
+      if (response.success) {
+        const { created, updated, total } = response.data;
+        
+        setSyncFeedback({
+          open: true,
+          message: `Sincronização concluída! Total: ${total} campanhas (${created} novas, ${updated} atualizadas)`,
+          type: 'success'
+        });
+        
+        // Recarregar a lista de campanhas
+        fetchCampaigns();
+      } else {
+        setSyncFeedback({
+          open: true,
+          message: response.error || 'Erro ao sincronizar campanhas',
+          type: 'error'
+        });
+      }
+    } catch (error) {
+      console.error('Erro na sincronização:', error);
+      setSyncFeedback({
+        open: true,
+        message: error.message || 'Erro desconhecido na sincronização',
+        type: 'error'
+      });
+    } finally {
+      setSyncLoading(false);
+    }
+  };
+  
+  // Fechar notificação
+  const handleCloseFeedback = () => {
+    setSyncFeedback({
+      ...syncFeedback,
+      open: false
+    });
+  };
+  
   // Renderizar indicador de carregamento
   if (loading && campaigns.length === 0) {
     return (
@@ -161,6 +235,14 @@ const Campaigns = () => {
             onClick={() => setShowFilters(!showFilters)}
           >
             {showFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
+          </Button>
+          <Button 
+            variant="contained" 
+            startIcon={<SyncIcon />}
+            onClick={handleSyncCampaigns}
+            disabled={syncLoading}
+          >
+            Sincronizar Campanhas
           </Button>
         </Box>
         
@@ -190,6 +272,16 @@ const Campaigns = () => {
             
             <Box mb={3}>
               <Typography variant="subtitle2" gutterBottom>
+                Conta
+              </Typography>
+              <AccountSelector 
+                value={selectedAccountId}
+                onChange={handleAccountChange}
+              />
+            </Box>
+            
+            <Box mb={3}>
+              <Typography variant="subtitle2" gutterBottom>
                 Período
               </Typography>
               <DateRangePicker 
@@ -209,7 +301,7 @@ const Campaigns = () => {
                 <Chip
                   key={status}
                   label={status}
-                  color={statusFilter === status ? 'primary' : 'default'}
+                  color={statusFilter === status ? 'primary' : 'default'} 
                   variant={statusFilter === status ? 'filled' : 'outlined'}
                   onClick={() => handleStatusFilter(status)}
                   clickable
@@ -342,6 +434,19 @@ const Campaigns = () => {
           />
         </TableContainer>
       </Box>
+      <Snackbar
+        open={syncFeedback.open}
+        autoHideDuration={6000}
+        onClose={handleCloseFeedback}
+      >
+        <Alert 
+          onClose={handleCloseFeedback} 
+          severity={syncFeedback.type} 
+          sx={{ width: '100%' }}
+        >
+          {syncFeedback.message}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

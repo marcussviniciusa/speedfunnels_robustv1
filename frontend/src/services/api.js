@@ -148,7 +148,17 @@ const getCampaigns = async (filters = {}, page = 1, limit = 10) => {
     formattedFilters.endDate = formatDate(formattedFilters.endDate);
   }
   
+  // Garantir que o accountId seja passado como string e com nome correto
+  if (formattedFilters.accountId) {
+    console.log('Account ID sendo enviado:', formattedFilters.accountId);
+    // Garantir que o nome do parâmetro esteja correto para a API
+    formattedFilters.accountId = formattedFilters.accountId.toString();
+  }
+  
   try {
+    // Log completo dos parâmetros sendo enviados
+    console.log('Parâmetros enviados para a API:', formattedFilters);
+    
     const response = await api.get('/campaigns', {
       params: {
         ...formattedFilters,
@@ -232,9 +242,10 @@ const getCampaignAds = async (id) => {
  * Obtém estatísticas gerais para o dashboard
  * @param {string} startDate - Data inicial (YYYY-MM-DD)
  * @param {string} endDate - Data final (YYYY-MM-DD)
+ * @param {string} accountId - ID da conta de anúncio selecionada (opcional)
  * @returns {Promise} Promessa com os dados
  */
-const getDashboardStats = async (startDate, endDate) => {
+const getDashboardStats = async (startDate, endDate, accountId = null) => {
   // Validar e formatar datas
   const formattedStartDate = formatDate(startDate);
   const formattedEndDate = formatDate(endDate);
@@ -245,17 +256,48 @@ const getDashboardStats = async (startDate, endDate) => {
   }
   
   try {
-    const response = await api.get('/stats/dashboard', {
-      params: {
-        startDate: formattedStartDate,
-        endDate: formattedEndDate
-      },
-    });
+    // Configurar parâmetros da requisição
+    const params = {
+      startDate: formattedStartDate,
+      endDate: formattedEndDate
+    };
+    
+    // Adicionar accountId aos parâmetros se fornecido
+    if (accountId) {
+      params.accountId = accountId;
+    }
+    
+    console.log('Buscando estatísticas com parâmetros:', params);
+    
+    const response = await api.get('/stats/dashboard', { params });
     
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar estatísticas do dashboard:', error);
     throw error;
+  }
+};
+
+/**
+ * Sincroniza campanhas do Meta para uma conta específica
+ * @param {string} accountId - ID da conta de anúncios
+ * @returns {Promise} Promessa com o resultado da sincronização
+ */
+const syncCampaignsFromMeta = async (accountId) => {
+  try {
+    if (!accountId) {
+      throw new Error('ID da conta não fornecido');
+    }
+    
+    const response = await api.post(`/campaigns/sync/${accountId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao sincronizar campanhas:', error);
+    
+    return {
+      success: false,
+      error: error.response?.data?.message || error.message || 'Erro ao sincronizar campanhas'
+    };
   }
 };
 
@@ -266,6 +308,7 @@ export {
   getCampaignPerformance,
   getCampaignAds,
   getDashboardStats,
+  syncCampaignsFromMeta,
   formatDate,
   validateDateFilter,
   DATE_FORMAT

@@ -89,6 +89,31 @@ const CampaignPerformanceChart = ({
     return forTooltip ? Number(value).toLocaleString('pt-BR') : Number(value);
   };
   
+  // Calcula os limites do domínio do eixo Y
+  const calculateYDomain = () => {
+    if (!chartData || chartData.length === 0) return [0, 10];
+    
+    // Pega todos os valores válidos
+    const values = chartData
+      .map(item => Number(item[metric]))
+      .filter(val => !isNaN(val) && val !== null && val !== undefined);
+    
+    if (values.length === 0) return [0, 10];
+    
+    // Calcula mínimo e máximo
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    
+    // Para valores muito pequenos, use um range padrão
+    if (min === max) return [0, max === 0 ? 10 : max * 1.1];
+    
+    // Adiciona um pouco de margem
+    const padding = (max - min) * 0.1;
+    
+    // Nunca permita valores negativos para o eixo Y em métricas de desempenho
+    return [Math.max(0, min - padding), max + padding];
+  };
+  
   // Renderização do tooltip customizado
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -185,6 +210,7 @@ const CampaignPerformanceChart = ({
               <Label value="Data" offset={-10} position="insideBottom" />
             </XAxis>
             <YAxis
+              domain={calculateYDomain()}
               tickFormatter={(value) => formatMetricValue(value, true)}
             >
               <Label 

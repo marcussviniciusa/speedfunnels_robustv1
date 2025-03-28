@@ -16,6 +16,8 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import DateRangePicker from '../components/DateRangePicker';
+import AccountSelector from '../components/AccountSelector';
+import DashboardPerformanceChart from '../components/DashboardPerformanceChart';
 import { getLastDaysFilter, formatToDisplayDate } from '../utils/dateUtils';
 import { getDashboardStats } from '../services/api';
 
@@ -29,6 +31,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [dateFilter, setDateFilter] = useState(getLastDaysFilter(30));
+  const [selectedAccountId, setSelectedAccountId] = useState('');
   
   // Carregar estatísticas
   useEffect(() => {
@@ -37,7 +40,12 @@ const Dashboard = () => {
       setError(null);
       
       try {
-        const response = await getDashboardStats(dateFilter.startDate, dateFilter.endDate);
+        // Passar o ID da conta selecionada para a API
+        const response = await getDashboardStats(
+          dateFilter.startDate, 
+          dateFilter.endDate,
+          selectedAccountId || null
+        );
         
         if (response.success) {
           setStats(response.data);
@@ -56,7 +64,7 @@ const Dashboard = () => {
     };
     
     fetchStats();
-  }, [dateFilter]);
+  }, [dateFilter, selectedAccountId]);
   
   // Manipular mudança no filtro de data
   const handleDateFilterChange = (newFilter) => {
@@ -201,6 +209,19 @@ const Dashboard = () => {
           )}
         </Paper>
         
+        {/* Seletor de conta */}
+        <Paper variant="outlined" sx={{ p: 3, mb: 4 }}>
+          <Typography variant="h6" gutterBottom>
+            Conta
+          </Typography>
+          
+          <AccountSelector 
+            value={selectedAccountId}
+            onChange={(accountId) => setSelectedAccountId(accountId)}
+            disabled={loading}
+          />
+        </Paper>
+        
         {/* Mensagem de erro */}
         {error && (
           <Alert severity="error" sx={{ mb: 3 }}>
@@ -247,6 +268,22 @@ const Dashboard = () => {
               {renderStatCard('Custo por Clique', stats.costPerClick, stats.previousCostPerClick, 'currency')}
               {renderStatCard('CTR', stats.ctr, stats.previousCtr, 'percent')}
             </Grid>
+            
+            {/* Gráficos de Performance */}
+            <Divider sx={{ my: 4 }} />
+            
+            <Typography variant="h5" gutterBottom>
+              Gráficos de Performance
+            </Typography>
+            
+            <Paper variant="outlined" sx={{ p: 3, mt: 2 }}>
+              <DashboardPerformanceChart 
+                data={stats.dailyData || []} 
+                loading={loading} 
+                error={error}
+                dateRange={dateFilter}
+              />
+            </Paper>
             
             {/* Se necessário, adicionar mais seções de estatísticas */}
           </Box>

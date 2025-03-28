@@ -344,44 +344,66 @@ const getAdsByCampaignId = async (campaignId, params = {}) => {
  * @param {string} timeIncrement - Incremento de tempo (day, week, month)
  * @returns {Array} Array de dados simulados de performance por dia
  */
-const generateMockPerformanceData = (startDate, endDate, timeIncrement = 'day') => {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-  const mockData = [];
+const generateMockPerformanceData = (startDate, endDate, timeIncrement = 'day', accountId = 'default') => {
+  const startDateObj = new Date(startDate);
+  const endDateObj = new Date(endDate);
+  const dayInMillis = 24 * 60 * 60 * 1000;
+  const result = [];
   
-  // Criar array de datas no intervalo
-  const current = new Date(start);
-  while (current <= end) {
-    // Base metrics with small random variations
-    const impressions = 1000 + Math.floor(Math.random() * 500);
-    const clicks = 50 + Math.floor(Math.random() * 30);
-    const spend = 100 + Math.random() * 50;
-    const conversions = 5 + Math.floor(Math.random() * 5);
-    const roas = 2 + Math.random() * 1.5;
+  // Semente para garantir que os mesmos dados sejam gerados para as mesmas datas e conta
+  const seedBase = `${accountId || 'default'}_${startDate}_${endDate}`;
+  
+  // Função para gerar número pseudoaleatório consistente
+  const seededRandom = (seed) => {
+    const hash = [...seed].reduce((acc, char) => {
+      return ((acc << 5) - acc) + char.charCodeAt(0);
+    }, 0);
     
-    mockData.push({
-      date_start: format(current, 'yyyy-MM-dd'),
-      date_stop: format(current, 'yyyy-MM-dd'),
-      impressions: impressions.toString(),
-      clicks: clicks.toString(),
-      spend: spend.toFixed(2),
-      conversions: conversions.toString(),
-      ctr: ((clicks / impressions) * 100).toFixed(2),
-      cpc: (spend / clicks).toFixed(2),
-      cpm: ((spend / impressions) * 1000).toFixed(2),
-      purchase_roas: roas.toFixed(2),
-      reach: (impressions * 0.8).toFixed(0),
-      frequency: (1.2 + Math.random() * 0.5).toFixed(2),
-      // Additional derived metrics
-      costPerConversion: (spend / conversions).toFixed(2),
-      revenue: (spend * roas).toFixed(2)
+    // Usar o hash como semente para o gerador
+    const x = Math.sin(hash) * 10000;
+    return x - Math.floor(x);
+  };
+  
+  // Gerar dados para cada dia no intervalo
+  for (let d = new Date(startDateObj); d <= endDateObj; d = new Date(d.getTime() + dayInMillis)) {
+    const currentDate = format(d, 'yyyy-MM-dd');
+    
+    // Usar a data atual como parte da semente para este registro
+    const dailySeed = `${seedBase}_${currentDate}`;
+    
+    // Gerar valores consistentes para esta data
+    const rand = (min, max) => {
+      const randomVal = seededRandom(dailySeed + min + max);
+      return Math.floor(min + randomVal * (max - min));
+    };
+    
+    // Calcular métricas básicas - usando mesma semente para garantir consistência
+    const impressions = rand(100, 1000);
+    const clicks = rand(5, Math.floor(impressions * 0.2)); // No máximo 20% de CTR
+    const spend = parseFloat((rand(1000, 10000) / 100).toFixed(2)); // R$10-R$100
+    const cpc = parseFloat((spend / (clicks || 1)).toFixed(2));
+    const cpm = parseFloat((spend / (impressions / 1000)).toFixed(2));
+    
+    // Métricas derivadas (conversões)
+    const conversions = rand(0, Math.ceil(clicks * 0.3)); // Até 30% de conversão sobre cliques
+    const purchases = (conversions > 0) ? rand(0, Math.ceil(conversions * 0.2)) : 0; // Até 20% das conversões são compras
+    const revenue = purchases * rand(50, 200); // Valor médio por compra entre R$50-R$200
+    
+    result.push({
+      date_start: currentDate,
+      date_stop: currentDate,
+      impressions,
+      clicks,
+      spend,
+      cpc,
+      cpm,
+      conversions,
+      purchases,
+      revenue
     });
-    
-    // Avançar para o próximo dia
-    current.setDate(current.getDate() + 1);
   }
   
-  return mockData;
+  return result;
 };
 
 /**
@@ -420,8 +442,28 @@ const getActiveMetaAccount = async () => {
 
 const getAccountPerformance = async (startDate, endDate, allowSimulatedData = true, timeIncrement = 'day', selectedAccountId = null) => {
   try {
-    // Buscar a conta ativa do banco de dados
-    const activeAccount = await getActiveMetaAccount();
+    logger.info(`Solicitado getAccountPerformance para período ${startDate} até ${endDate} com accountId=${selectedAccountId || 'padrão'}`);
+    
+    // Buscar a conta ativa do banco de dados ou usar a conta selecionada
+    let activeAccount;
+    
+    if (selectedAccountId) {
+      // Se o usuário selecionou uma conta específica, buscá-la
+      activeAccount = await MetaAccount.findOne({ 
+        where: { 
+          accountId: selectedAccountId,
+          isActive: true
+        } 
+      });
+      
+      if (!activeAccount) {
+        logger.warn(`Conta selecionada ${selectedAccountId} não encontrada. Usando conta ativa padrão.`);
+        activeAccount = await getActiveMetaAccount();
+      }
+    } else {
+      // Caso contrário, usar a conta ativa padrão
+      activeAccount = await getActiveMetaAccount();
+    }
     
     if (!activeAccount) {
       throw new Error('Nenhuma conta do Meta ativa encontrada');
@@ -499,26 +541,21 @@ const getAccountPerformance = async (startDate, endDate, allowSimulatedData = tr
       'impressions',
       'clicks',
       'spend',
-      'conversions',
-      'actions',           // Todas as ações realizadas (incluindo diferentes tipos de conversões)
-      'action_values',     // Valores monetários associados às ações
-      'purchase_roas',     // Retorno sobre investimento em compras
-      'cpc',               // Custo por clique
-      'cpm',               // Custo por mil impressões
-      'ctr',               // Taxa de cliques
-      'reach',             // Alcance
-      'frequency'          // Frequência
+      'cpm',
+      'cpc',
+      'actions',
+      'action_values',
+      'date_start',
+      'date_stop'
     ];
     
-    // Nota: Os campos 'purchases', 'website_purchases' e 'offsite_conversions' foram removidos 
-    // por não serem suportados pela API do Meta Ads Insights
-    
-    // Parâmetros da requisição
+    // Parâmetros da API
     const params = {
-      time_range: JSON.stringify(timeRange),
-      time_increment: "1", // Usar increment diário para poder filtrar por período corretamente
+      access_token: accessToken,
       level: 'account',
       fields: fields.join(','),
+      time_range: JSON.stringify(timeRange),
+      time_increment: 1, // Forçar incremento diário (1 = diário, 7 = semanal, etc.)
       limit: 500
     };
     
@@ -794,7 +831,7 @@ const getAccountPerformance = async (startDate, endDate, allowSimulatedData = tr
         } : null
       });
       
-      // Agregar os dados diários em um único conjunto de dados
+      // Verificar se temos dados para o período
       if (processedData.length === 0) {
         logger.info(`Nenhum dado encontrado para o período ${timeRange.since} a ${timeRange.until}`);
         return [{
@@ -809,38 +846,10 @@ const getAccountPerformance = async (startDate, endDate, allowSimulatedData = tr
         }];
       }
       
-      // Agregar dados de todos os dias no período
-      const aggregatedData = processedData.reduce((acc, item) => {
-        // Somar métricas principais
-        acc.impressions = (acc.impressions || 0) + parseInt(item.impressions || 0);
-        acc.clicks = (acc.clicks || 0) + parseInt(item.clicks || 0);
-        acc.spend = (acc.spend || 0) + parseFloat(item.spend || 0);
-        acc.conversions = (acc.conversions || 0) + parseInt(item.conversions || 0);
-        acc.purchases = (acc.purchases || 0) + (item.purchases || 0);
-        acc.revenue = (acc.revenue || 0) + (item.revenue || 0);
-        
-        // Manter o primeiro e último dia para o range
-        if (!acc.date_start || item.date_start < acc.date_start) acc.date_start = item.date_start;
-        if (!acc.date_stop || item.date_stop > acc.date_stop) acc.date_stop = item.date_stop;
-        
-        return acc;
-      }, {});
+      // Retornar os dados diários em vez de agregá-los
+      logger.info(`Retornando ${processedData.length} registros diários de performance para o período ${timeRange.since} a ${timeRange.until}`);
       
-      // Converter o objeto agregado em um array com um único item
-      const result = [aggregatedData];
-      
-      // Log dos dados agregados
-      logger.info(`Dados AGREGADOS para período ${timeRange.since} a ${timeRange.until}:`, {
-        diasOriginais: processedData.length,
-        impressions: aggregatedData.impressions,
-        clicks: aggregatedData.clicks,
-        spend: aggregatedData.spend,
-        conversions: aggregatedData.conversions,
-        purchases: aggregatedData.purchases,
-        revenue: aggregatedData.revenue
-      });
-      
-      return result;
+      return processedData;
     } catch (apiError) {
       // Se houver erro de permissão ou API, verificar se é permitido gerar dados simulados
       if (allowSimulatedData) {
@@ -868,11 +877,122 @@ const getAccountPerformance = async (startDate, endDate, allowSimulatedData = tr
   }
 };
 
+/**
+ * Busca todas as campanhas de uma conta do Meta
+ * @param {string} accountId - ID da conta de anúncios
+ * @param {string} accessToken - Token de acesso
+ * @param {Object} params - Parâmetros adicionais para a requisição
+ * @returns {Promise<Array>} Lista de campanhas
+ */
+const getCampaignsByAccount = async (accountId, accessToken = null, params = {}) => {
+  try {
+    // Usar o token fornecido ou o da variável de ambiente como fallback
+    const token = accessToken || process.env.META_ACCESS_TOKEN;
+    if (!token) {
+      throw new Error('Token de acesso do Meta não configurado');
+    }
+
+    if (!accountId) {
+      throw new Error('ID da conta de anúncios não fornecido');
+    }
+
+    // Campos padrão a serem retornados pela API
+    const defaultFields = [
+      'id', 'name', 'status', 'objective', 
+      'start_time', 'stop_time', 'created_time', 
+      'updated_time', 'daily_budget', 'lifetime_budget',
+      'insights.date_preset(last_30d){impressions,clicks,spend,conversions}'
+    ];
+
+    // Parâmetros para a requisição
+    const requestParams = { 
+      access_token: token,
+      fields: defaultFields.join(','),
+      limit: 100, // Aumento do limite para garantir que mais campanhas sejam retornadas por requisição
+      ...params
+    };
+
+    logger.info(`Buscando campanhas para a conta ${accountId}`, {
+      accountId,
+      fields: requestParams.fields
+    });
+
+    // Fazer a requisição à API
+    const response = await apiClient.get(`/act_${accountId}/campaigns`, { 
+      params: requestParams 
+    });
+
+    // Verificar a resposta
+    if (!response.data || !response.data.data) {
+      logger.warn(`Resposta vazia ou inesperada da API do Meta para a conta ${accountId}`);
+      return { data: [] };
+    }
+
+    // Processar os dados obtidos
+    let campaigns = response.data.data;
+    let paging = response.data.paging;
+
+    // Implementar paginação automática para buscar todas as campanhas
+    if (paging && paging.next) {
+      logger.info(`Detectada paginação, buscando campanhas adicionais...`);
+      let nextUrl = paging.next;
+      let hasMore = true;
+      
+      while (hasMore && campaigns.length < 500) { // Limite de segurança para evitar loops infinitos
+        try {
+          const nextResponse = await axios.get(nextUrl); 
+          if (nextResponse.data && nextResponse.data.data && nextResponse.data.data.length > 0) {
+            campaigns = [...campaigns, ...nextResponse.data.data];
+            
+            if (nextResponse.data.paging && nextResponse.data.paging.next) {
+              nextUrl = nextResponse.data.paging.next;
+            } else {
+              hasMore = false;
+            }
+          } else {
+            hasMore = false;
+          }
+        } catch (paginationError) {
+          logger.error('Erro ao buscar página adicional de campanhas', {
+            message: paginationError.message
+          });
+          hasMore = false;
+        }
+      }
+    }
+
+    // Filtrar apenas campanhas reais (remover qualquer dado de teste, se houver)
+    campaigns = campaigns.filter(campaign => {
+      return (
+        campaign.id && // Tem um ID válido
+        campaign.name && // Tem um nome
+        !campaign.name.toLowerCase().includes('test') && // Não é uma campanha de teste
+        !campaign.name.toLowerCase().includes('teste') // Não é uma campanha de teste (em português)
+      );
+    });
+
+    // Log de resumo
+    logger.info(`Recuperadas ${campaigns.length} campanhas da conta ${accountId}`);
+
+    return {
+      data: campaigns,
+      paging
+    };
+  } catch (error) {
+    logger.error(`Erro ao buscar campanhas da conta ${accountId}`, {
+      message: error.message,
+      stack: error.stack
+    });
+    throw error;
+  }
+};
+
 module.exports = {
   getInsights,
   getCampaignDetails,
   getAdsByCampaignId,
   getAccountPerformance,
-  prepareMetaTimeRange,
-  getActiveMetaAccount
+  getActiveMetaAccount,
+  getCampaignsByAccount,
+  generateMockPerformanceData
 };

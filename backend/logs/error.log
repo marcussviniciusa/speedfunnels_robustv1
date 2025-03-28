@@ -1,0 +1,783 @@
+[2025-03-27 18:02:31.931] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "validateDateRange is not a function"
+}
+[2025-03-27 18:03:34.656] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "validateDateRange is not a function"
+}
+[2025-03-27 18:04:47.181] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/2632225560191653/insights",
+  "response": "{\"error\":{\"message\":\"(#100) Tried accessing nonexisting field (insights) on node type (Business)\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Aix_4yuQvwAkFwMVHQz6knV\"}}"
+}
+[2025-03-27 18:04:47.184] [ERROR]: Erro ao obter insights para account 2632225560191653 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:376:22)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:04:47.185] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:376:22)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:04:47.185] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 18:05:31.141] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/2632225560191653/insights",
+  "response": "{\"error\":{\"message\":\"(#100) Tried accessing nonexisting field (insights) on node type (Business)\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ASwG4mCdcjsonUJGMi65rdE\"}}"
+}
+[2025-03-27 18:05:31.143] [ERROR]: Erro ao obter insights para account 2632225560191653 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:376:22)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:05:31.143] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:376:22)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:05:31.143] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 18:06:41.621] [ERROR]: [Meta API Error] Status: 403 Request failed with status code 403
+{
+  "service": "speedfunnels-api",
+  "url": "/act_2632225560191653/insights",
+  "response": "{\"error\":{\"message\":\"(#200) Ad account owner has NOT grant ads_management or ads_read permission, refer to https://developers.facebook.com/docs/marketing-api/get-started/authorization/#permissions-and-features for details.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AuXdG4HNIobNekPMkK5Lzsj\"}}"
+}
+[2025-03-27 18:06:41.623] [ERROR]: Erro ao obter insights para account act_2632225560191653 Request failed with status code 403
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:381:22)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:06:41.624] [ERROR]: Erro ao obter performance da conta Request failed with status code 403
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:381:22)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:06:41.625] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 403"
+}
+[2025-03-27 18:08:37.760] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AXe5U3y6x_d41BYIgAN9xgK\"}}"
+}
+[2025-03-27 18:08:37.772] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:08:38.346] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AMTROBE6Y1W65E1e_dwxWPj\"}}"
+}
+[2025-03-27 18:08:38.348] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:14:47.202] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AdeulOLKRC9XrW1acwpn83Y\"}}"
+}
+[2025-03-27 18:14:47.204] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:14:47.254] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"An297SUKCdcPPk6M7d1WB4p\"}}"
+}
+[2025-03-27 18:14:47.256] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:14:47.797] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A4WsEokgt8HFJpFetX42TY6\"}}"
+}
+[2025-03-27 18:14:47.800] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:14:48.036] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AX_M_eyGKeOKQyy_e_ffyVn\"}}"
+}
+[2025-03-27 18:14:48.038] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:01.947] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A8mbn5lDqDPkdjswha0xxOw\"}}"
+}
+[2025-03-27 18:15:01.948] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:02.454] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AMfd3xJH0wjV6DO-J8XLLz-\"}}"
+}
+[2025-03-27 18:15:02.455] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:16.559] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AIwjm4T6Muna-dh2cTs1LhE\"}}"
+}
+[2025-03-27 18:15:16.560] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:16.617] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AVxDG_p9oeFm6kVFT0focfQ\"}}"
+}
+[2025-03-27 18:15:16.619] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:17.083] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AMzkBo5EGQ36kfLos2IK2xp\"}}"
+}
+[2025-03-27 18:15:17.085] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:17.152] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AjnkIm196WARUH1SBUz9EqX\"}}"
+}
+[2025-03-27 18:15:17.153] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:20.614] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AJEeUVWhnEfrsglQk9oBEQU\"}}"
+}
+[2025-03-27 18:15:20.615] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:21.184] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AGrG-J9VRKnBlq4y3uEN43v\"}}"
+}
+[2025-03-27 18:15:21.187] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:24.902] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ACOlBTi4eQhp4O_jd9hZISp\"}}"
+}
+[2025-03-27 18:15:24.903] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:25.537] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AHBtZdgzvlcSnFlv70FGXdL\"}}"
+}
+[2025-03-27 18:15:25.539] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:28.137] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AtKeBPFogVLexb_JoE5ZTEG\"}}"
+}
+[2025-03-27 18:15:28.139] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:28.754] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AVvLPMPoeKNoRDjVQa-wLJF\"}}"
+}
+[2025-03-27 18:15:28.756] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:29.887] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AJ2azvMIaytM9jCKp-twidD\"}}"
+}
+[2025-03-27 18:15:29.888] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:30.420] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AzuJbISDNX93_6Dm3Pk7Rux\"}}"
+}
+[2025-03-27 18:15:30.422] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:31.572] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ARTd2uSMzt_r3EkaNBYIjTv\"}}"
+}
+[2025-03-27 18:15:31.579] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:32.210] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ATYMA_GgVob-9RKE09_xiUt\"}}"
+}
+[2025-03-27 18:15:32.211] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:33.308] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AHDmI3MVL1_NWqKU_7_Dxgk\"}}"
+}
+[2025-03-27 18:15:33.309] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:33.840] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AhE23WgOtsWoUUUEr0V1II0\"}}"
+}
+[2025-03-27 18:15:33.841] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:34.922] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Ad_jHBiEBg6zapO-z6GBb74\"}}"
+}
+[2025-03-27 18:15:34.924] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:35.521] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AvO49GtGToK0ZiBtiieMyQR\"}}"
+}
+[2025-03-27 18:15:35.522] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:36.816] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ASmFtlLyK3kAR0bgfQA8s9F\"}}"
+}
+[2025-03-27 18:15:36.817] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:37.523] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Acn73PTPcLrxaIP1r10c3E-\"}}"
+}
+[2025-03-27 18:15:37.524] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:38.634] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Aoc06qgNkBXCO-sOlxvlaqU\"}}"
+}
+[2025-03-27 18:15:38.635] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:39.153] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"APdTt11l72tmM8fujjvKAeN\"}}"
+}
+[2025-03-27 18:15:39.155] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:40.320] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AU5z_eijAlrjNZRQ9w27mGy\"}}"
+}
+[2025-03-27 18:15:40.320] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:40.854] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AJhI0SukIGvZuHDGvzSfJtY\"}}"
+}
+[2025-03-27 18:15:40.854] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:41.935] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A7unJ5t0a3gWSvxWibXkOPQ\"}}"
+}
+[2025-03-27 18:15:41.936] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:42.460] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A7a0GQaFbnJem3ncxPnYpza\"}}"
+}
+[2025-03-27 18:15:42.461] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:43.806] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AGzxl0T5yxFOSlHmDN_reHK\"}}"
+}
+[2025-03-27 18:15:43.807] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:44.346] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"Af6iN8srM6uQsnSom3nQ6jv\"}}"
+}
+[2025-03-27 18:15:44.348] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:47.404] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A3j9mnPqyDXtK6NX0bmJK1N\"}}"
+}
+[2025-03-27 18:15:47.405] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:47.929] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AV2xPIhg44Qedy9ohFUPyZV\"}}"
+}
+[2025-03-27 18:15:47.930] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:15:50.064] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AwczByDt9yq2IdDpml82xX2\"}}"
+}
+[2025-03-27 18:15:50.067] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:15:50.670] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AK3_3JOBeM1L2BHJrQv7PM4\"}}"
+}
+[2025-03-27 18:15:50.671] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:16:04.366] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ARarbehp6WFYDawHSMI6VYy\"}}"
+}
+[2025-03-27 18:16:04.367] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:16:05.060] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AbxR9Jh9HdZT1q0sOCOzGAJ\"}}"
+}
+[2025-03-27 18:16:05.061] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:16:08.452] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AhHUAvpNrbFZwDq-y59_Bh8\"}}"
+}
+[2025-03-27 18:16:08.453] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:16:08.983] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ABASpRiKgxYTTKazmukZrqF\"}}"
+}
+[2025-03-27 18:16:08.985] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:16:11.381] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"ApJzlcgWQ8UmbB-yGLfydW3\"}}"
+}
+[2025-03-27 18:16:11.384] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:16:11.935] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A0zac6K_Sa5YofVQObj-0If\"}}"
+}
+[2025-03-27 18:16:11.938] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:16:13.026] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A1BjBxsKiu1kNIFwRWSPErJ\"}}"
+}
+[2025-03-27 18:16:13.027] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:51:31)"
+}
+[2025-03-27 18:16:13.722] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) name_placeholder must be one of the following values: monthly, all_days\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AxOReE2AuDOVsLgKWeJt6an\"}}"
+}
+[2025-03-27 18:16:13.722] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:429:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:57:32)"
+}
+[2025-03-27 18:47:19.971] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_1738850850203960/insights",
+  "response": "{\"error\":{\"message\":\"(#100) For field 'insights': since must be less than or equal to until in time_range\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AI2swdFJieey53uhOsqjzBY\"}}"
+}
+[2025-03-27 18:47:19.972] [ERROR]: Erro ao obter insights para account act_1738850850203960 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:485:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:126:31)"
+}
+[2025-03-27 18:47:19.972] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 18:47:19.973] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at IncomingMessage.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at IncomingMessage.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:485:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:126:31)"
+}
+[2025-03-27 18:47:19.973] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 23:57:44.149] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_4683509775074866/insights",
+  "response": "{\"error\":{\"message\":\"(#100) purchases, website_purchases, offsite_conversions are not valid for fields param. please check https://developers.facebook.com/docs/marketing-api/reference/ads-insights/ for all valid values\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AWMt1RWDKUM4iBbPNJ_nbDW\"}}"
+}
+[2025-03-27 23:57:44.151] [ERROR]: Erro ao obter insights para account act_4683509775074866 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-27 23:57:44.151] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 23:57:44.151] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-27 23:57:44.152] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 23:57:44.162] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_4683509775074866/insights",
+  "response": "{\"error\":{\"message\":\"(#100) purchases, website_purchases, offsite_conversions are not valid for fields param. please check https://developers.facebook.com/docs/marketing-api/reference/ads-insights/ for all valid values\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AQswSMi_ev66pg-REtU4nCC\"}}"
+}
+[2025-03-27 23:57:44.163] [ERROR]: Erro ao obter insights para account act_4683509775074866 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-27 23:57:44.164] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-27 23:57:44.164] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-27 23:57:44.165] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:17.230] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_4683509775074866/insights",
+  "response": "{\"error\":{\"message\":\"(#100) purchases, website_purchases, offsite_conversions are not valid for fields param. please check https://developers.facebook.com/docs/marketing-api/reference/ads-insights/ for all valid values\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"A_AjYu1TbvJxHmVBoAU9bmX\"}}"
+}
+[2025-03-28 00:00:17.232] [ERROR]: Erro ao obter insights para account act_4683509775074866 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:17.235] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:17.235] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:17.236] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:18.163] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_4683509775074866/insights",
+  "response": "{\"error\":{\"message\":\"(#100) purchases, website_purchases, offsite_conversions are not valid for fields param. please check https://developers.facebook.com/docs/marketing-api/reference/ads-insights/ for all valid values\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AFv9rJPn-PFX_ps16SZIVWg\"}}"
+}
+[2025-03-28 00:00:18.169] [ERROR]: Erro ao obter insights para account act_4683509775074866 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:18.169] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:18.171] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:18.171] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:44.361] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_4683509775074866/insights",
+  "response": "{\"error\":{\"message\":\"(#100) purchases, website_purchases, offsite_conversions are not valid for fields param. please check https://developers.facebook.com/docs/marketing-api/reference/ads-insights/ for all valid values\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AWMC5iaJOOm8K0qeklD926c\"}}"
+}
+[2025-03-28 00:00:44.362] [ERROR]: Erro ao obter insights para account act_4683509775074866 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:44.363] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:44.363] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:44.364] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:44.367] [ERROR]: [Meta API Error] Status: 400 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "url": "/act_4683509775074866/insights",
+  "response": "{\"error\":{\"message\":\"(#100) purchases, website_purchases, offsite_conversions are not valid for fields param. please check https://developers.facebook.com/docs/marketing-api/reference/ads-insights/ for all valid values\",\"type\":\"OAuthException\",\"code\":100,\"fbtrace_id\":\"AVZgiJ953vBN7i8Mxp2XYrR\"}}"
+}
+[2025-03-28 00:00:44.369] [ERROR]: Erro ao obter insights para account act_4683509775074866 Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:44.370] [ERROR]: Erro na API e simulação não permitida
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}
+[2025-03-28 00:00:44.372] [ERROR]: Erro ao obter performance da conta Request failed with status code 400
+{
+  "service": "speedfunnels-api",
+  "stack": "AxiosError: Request failed with status code 400\n    at settle (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:2031:12)\n    at BrotliDecompress.handleStreamEnd (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:3148:11)\n    at BrotliDecompress.emit (node:events:529:35)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (/home/m/speedfunnels_robust/backend/node_modules/axios/dist/node/axios.cjs:4258:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async getInsights (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:123:22)\n    at async Object.getAccountPerformance (/home/m/speedfunnels_robust/backend/src/services/metaApiService.js:490:24)\n    at async getDashboardStats (/home/m/speedfunnels_robust/backend/src/controllers/statsController.js:129:31)"
+}
+[2025-03-28 00:00:44.372] [ERROR]: Erro ao buscar estatísticas do dashboard
+{
+  "service": "speedfunnels-api",
+  "error": "Request failed with status code 400"
+}

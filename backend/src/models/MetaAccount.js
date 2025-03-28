@@ -13,7 +13,7 @@ class MetaAccount extends Model {
 
 MetaAccount.init({
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       primaryKey: true,
       autoIncrement: true
     },
@@ -27,6 +27,7 @@ MetaAccount.init({
     accountId: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true, // Adicionando restrição de unicidade
       validate: {
         notEmpty: true
       },

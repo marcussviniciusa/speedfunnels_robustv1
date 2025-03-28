@@ -29,7 +29,11 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import SyncIcon from '@mui/icons-material/Sync';
 import DateRangePicker from '../components/DateRangePicker';
 import AccountSelector from '../components/AccountSelector';
-import { getCampaigns, syncCampaignsFromMeta } from '../services/api';
+import { 
+  getCampaigns, 
+  getCampaignPerformance,
+  syncCampaignsFromMeta 
+} from '../services/api';
 import { getLastDaysFilter, formatToDisplayDate } from '../utils/dateUtils';
 
 /**
@@ -41,7 +45,9 @@ const Campaigns = () => {
   
   // Estados
   const [campaigns, setCampaigns] = useState([]);
+  const [filteredCampaigns, setFilteredCampaigns] = useState([]); 
   const [loading, setLoading] = useState(true);
+  const [checkingData, setCheckingData] = useState(false); 
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [dateFilter, setDateFilter] = useState(getLastDaysFilter(30));
@@ -91,6 +97,9 @@ const Campaigns = () => {
         if (response.data && response.data.length > 0) {
           console.log('Amostra de campanha:', response.data[0]);
         }
+        
+        // Depois que as campanhas são carregadas, verificar quais têm dados
+        await checkCampaignsWithData(response.data);
       } else {
         setError(response.error || 'Erro ao carregar campanhas');
       }
@@ -101,6 +110,75 @@ const Campaigns = () => {
       setLoading(false);
     }
   }, [dateFilter, statusFilter, searchTerm, selectedAccountId, page, rowsPerPage]);
+  
+  // Verificar quais campanhas têm dados de performance no período selecionado
+  const checkCampaignsWithData = async (campaignsList) => {
+    if (!campaignsList || campaignsList.length === 0) {
+      setFilteredCampaigns([]);
+      return;
+    }
+    
+    setCheckingData(true);
+    
+    try {
+      // Agora vamos FILTRAR campanhas, mantendo apenas as que têm dados
+      const campaignsWithData = [];
+      let totalProcessed = 0;
+      
+      const campaignPromises = campaignsList.map(async (campaign) => {
+        try {
+          const performanceData = await getCampaignPerformance(
+            campaign.id,
+            dateFilter.startDate,
+            dateFilter.endDate
+          );
+          
+          // Verificar se há dados de performance
+          let hasData = false;
+          
+          if (performanceData && performanceData.success && performanceData.data) {
+            hasData = performanceData.data.some(
+              item => (
+                (item.impressions && Number(item.impressions) > 0) || 
+                (item.clicks && Number(item.clicks) > 0) || 
+                (item.spend && Number(item.spend) > 0)
+              )
+            );
+          }
+          
+          // Se tiver dados, adicionar à lista filtrada
+          if (hasData) {
+            campaignsWithData.push({ 
+              ...campaign, 
+              hasPerformanceData: true 
+            });
+          }
+        } catch (error) {
+          console.error(`Erro ao verificar dados da campanha ${campaign.id}:`, error);
+          // Em caso de erro, não incluímos a campanha
+        }
+        
+        totalProcessed++;
+        if (totalProcessed % 3 === 0) {
+          console.log(`Verificadas ${totalProcessed} de ${campaignsList.length} campanhas`);
+        }
+      });
+      
+      // Aguardar todas as verificações
+      await Promise.all(campaignPromises);
+      
+      // Atualizar o estado com APENAS as campanhas que têm dados
+      setFilteredCampaigns(campaignsWithData);
+      
+      console.log(`Exibindo ${campaignsWithData.length} de ${campaignsList.length} campanhas (apenas com dados)`);
+    } catch (error) {
+      console.error('Erro ao verificar dados das campanhas:', error);
+      // Em caso de erro, não mostrar nenhuma campanha
+      setFilteredCampaigns([]);
+    } finally {
+      setCheckingData(false);
+    }
+  };
   
   // Carregar campanhas no carregamento da página e quando os filtros mudarem
   useEffect(() => {
@@ -319,7 +397,7 @@ const Campaigns = () => {
         )}
         
         {/* Resumo de campanhas */}
-        {!loading && campaigns.length > 0 && (
+        {!loading && filteredCampaigns.length > 0 && (
           <Grid container spacing={3} mb={4}>
             <Grid item xs={12} sm={4}>
               <Card variant="outlined">
@@ -328,7 +406,7 @@ const Campaigns = () => {
                     Total de Campanhas
                   </Typography>
                   <Typography variant="h4">
-                    {total}
+                    {filteredCampaigns.length}
                   </Typography>
                 </CardContent>
               </Card>
@@ -341,7 +419,7 @@ const Campaigns = () => {
                     Campanhas Ativas
                   </Typography>
                   <Typography variant="h4">
-                    {campaigns.filter(c => c.status === 'ACTIVE').length}
+                    {filteredCampaigns.filter(c => c.status === 'ACTIVE').length}
                   </Typography>
                 </CardContent>
               </Card>
@@ -362,6 +440,16 @@ const Campaigns = () => {
           </Grid>
         )}
         
+        {/* Indicador de verificação de dados */}
+        {checkingData && (
+          <Box display="flex" alignItems="center" mb={2}>
+            <CircularProgress size={20} sx={{ mr: 1 }} />
+            <Typography variant="body2" color="text.secondary">
+              Filtrando campanhas com dados no período...
+            </Typography>
+          </Box>
+        )}
+        
         {/* Tabela de Campanhas */}
         <TableContainer component={Paper} variant="outlined">
           <Table sx={{ minWidth: 650 }}>
@@ -376,20 +464,22 @@ const Campaigns = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {loading && campaigns.length === 0 ? (
+              {(loading || checkingData) && campaigns.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={6} align="center">
                     <CircularProgress size={24} />
                   </TableCell>
                 </TableRow>
-              ) : campaigns.length === 0 ? (
+              ) : filteredCampaigns.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={6} align="center">
-                    Nenhuma campanha encontrada.
+                    {campaigns.length > 0 ? 
+                      "Nenhuma campanha com dados para o período selecionado." : 
+                      "Nenhuma campanha encontrada."}
                   </TableCell>
                 </TableRow>
               ) : (
-                campaigns.map((campaign) => (
+                filteredCampaigns.map((campaign) => (
                   <TableRow 
                     key={campaign.id}
                     hover

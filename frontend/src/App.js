@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Campaigns from './pages/Campaigns';
 import CampaignDetails from './pages/CampaignDetails';
 import MetaAccounts from './pages/MetaAccounts';
+import Reports from './pages/Reports';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/campaigns" element={<Campaigns />} />
           <Route path="/campaigns/:id" element={<CampaignDetails />} />
           <Route path="/meta-accounts" element={<MetaAccounts />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -1,3 +1,4 @@
 backend/node_modules
 frontend/node_modules
-backend/logs
+backend/logs/*.log
+backend/reports/*.pdf

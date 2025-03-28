@@ -8,7 +8,20 @@ const MetaAccount = require('./MetaAccount');
 
 // Definir associações entre modelos (se necessário)
 const setupAssociations = () => {
-  // Por enquanto, não há associações
+  // Associação entre Campaign e MetaAccount
+  Campaign.belongsTo(MetaAccount, {
+    foreignKey: 'adAccountId',
+    targetKey: 'accountId',
+    as: 'metaAccount',
+    constraints: false // Não cria constraint no banco de dados
+  });
+  
+  MetaAccount.hasMany(Campaign, {
+    foreignKey: 'adAccountId',
+    sourceKey: 'accountId',
+    as: 'campaigns',
+    constraints: false // Não cria constraint no banco de dados
+  });
 };
 
 // Configurar associações

@@ -15,6 +15,7 @@ const campaignRoutes = require('./routes/campaignRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 const metaAccountRoutes = require('./routes/metaAccountRoutes');
 const seedRoutes = require('./routes/seedRoutes');
+const reportRoutes = require('./routes/reportRoutes');
 const logger = require('./utils/logger');
 
 // Criação do diretório de logs caso não exista
@@ -36,6 +37,13 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Diretório para arquivos estáticos dos relatórios
+app.use('/reports', express.static(path.join(__dirname, '../reports')));
+
+// Para servir relatórios compartilhados via token
+const reportController = require('./controllers/reportController');
+app.get('/reports/shared/:shareToken', reportController.getSharedReport);
 
 // Configuração de logs de requisições HTTP
 const morganFormat = process.env.NODE_ENV === 'production' ? 'combined' : 'dev';
@@ -60,6 +68,7 @@ app.use('/api/campaigns', campaignRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/meta-accounts', metaAccountRoutes);
 app.use('/api/seed', seedRoutes);
+app.use('/api/reports', reportRoutes);
 
 // Rota de teste/status
 app.get('/api/status', (req, res) => {

@@ -34,13 +34,13 @@ class CampaignController {
         startDate, endDate, status,
         search, sort = 'updatedAt',
         order = 'DESC', page = 1,
-        limit = 10, accountId
+        limit = 10, accountId, performanceOnly
       } = req.query;
 
       // Log para depuração
       logger.debug('Todos os parâmetros recebidos na request:', {
         startDate, endDate, status, search, 
-        accountId, page, limit
+        accountId, page, limit, performanceOnly
       });
 
       // Validar e formatar datas
@@ -178,24 +178,83 @@ class CampaignController {
         offset: (parseInt(page, 10) - 1) * parseInt(limit, 10)
       };
 
-      // Executar a query para contar o total de campanhas
-      const { count, rows } = await Campaign.findAndCountAll(options);
-
-      // Log do resultado
-      logger.debug(`Retornando ${rows.length} campanhas (total: ${count})`, {
-        firstResult: rows.length > 0 ? JSON.stringify(rows[0]) : 'nenhum'
+      // Executar a consulta paginada
+      const { rows, count } = await Campaign.findAndCountAll({
+        where,
+        limit: parseInt(limit),
+        offset: (parseInt(page) - 1) * parseInt(limit),
+        order: [[sort, order]],
+        include: [
+          {
+            model: MetaAccount,
+            as: 'metaAccount',
+            attributes: ['id', 'name', 'accountId']
+          }
+        ]
       });
 
-      // Retornar os resultados
+      // Formatar datas em cada item retornado
+      const formattedCampaigns = rows.map(campaign => {
+        const campaignData = campaign.get({ plain: true });
+        return formatEntityDates(
+          campaignData, 
+          ['startDate', 'endDate', 'createdAt', 'updatedAt', 'lastSyncedAt']
+        );
+      });
+
+      // Filtrar campanhas com dados de desempenho, se solicitado
+      let finalCampaigns = formattedCampaigns;
+      
+      if (performanceOnly === 'true' && formattedStartDate && formattedEndDate) {
+        logger.debug('Filtrando campanhas por desempenho');
+        const campaignsWithPerformance = [];
+
+        // Para cada campanha, verificar se tem dados de desempenho no período
+        for (const campaign of formattedCampaigns) {
+          try {
+            // Buscar dados de desempenho da API do Meta
+            const { metaAccountId, adAccountId } = campaign;
+            const accountId = metaAccountId || adAccountId;
+            
+            if (!accountId) continue;
+
+            const metaAccount = await MetaAccount.findByPk(accountId);
+            if (!metaAccount) continue;
+
+            const timeRange = prepareMetaTimeRange(formattedStartDate, formattedEndDate);
+            const insights = await metaApiService.getCampaignInsights(
+              metaAccount.accessToken,
+              campaign.campaignId || campaign.id,
+              timeRange
+            );
+
+            // Verificar se a campanha tem pelo menos um dia com impressões, cliques ou gastos > 0
+            const hasPerformance = insights.some(day => 
+              (day.impressions > 0 || day.clicks > 0 || parseFloat(day.spend) > 0)
+            );
+
+            if (hasPerformance) {
+              campaignsWithPerformance.push(campaign);
+            }
+          } catch (error) {
+            logger.error(`Erro ao verificar desempenho da campanha ${campaign.id}:`, error);
+            // Se não conseguir verificar o desempenho, mantém a campanha na lista
+            campaignsWithPerformance.push(campaign);
+          }
+        }
+
+        finalCampaigns = campaignsWithPerformance;
+      }
+
+      // Retornar resultado paginado
       return res.status(200).json({
         success: true,
-        data: rows,
-        pagination: {
-          total: count,
-          page: parseInt(page, 10),
-          limit: parseInt(limit, 10),
-          pages: Math.ceil(count / parseInt(limit, 10))
-        }
+        totalItems: performanceOnly === 'true' ? finalCampaigns.length : count,
+        totalPages: performanceOnly === 'true' 
+          ? Math.ceil(finalCampaigns.length / parseInt(limit))
+          : Math.ceil(count / parseInt(limit)),
+        currentPage: parseInt(page),
+        data: finalCampaigns
       });
 
     } catch (error) {
